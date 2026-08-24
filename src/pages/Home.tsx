@@ -5,7 +5,6 @@ import ServicesGrid from '@/components/sections/ServicesGrid'
 import ProcessSection from '@/components/sections/ProcessSection'
 import WhyAuthorsChooseUs from '@/components/sections/WhyAuthorsChooseUs'
 import PortfolioPreview from '@/components/sections/PortfolioPreview'
-import TestimonialsSection from '@/components/sections/TestimonialsSection'
 import FaqSection from '@/components/sections/FaqSection'
 import FinalCta from '@/components/sections/FinalCta'
 
@@ -23,7 +22,6 @@ export default function Home() {
       <ProcessSection />
       <WhyAuthorsChooseUs />
       <PortfolioPreview />
-      <TestimonialsSection />
       <FaqSection />
       <FinalCta />
     </>
