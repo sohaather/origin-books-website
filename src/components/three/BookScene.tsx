@@ -42,7 +42,7 @@ export default function BookScene({ autoRotate = true }: BookSceneProps) {
       <mesh castShadow receiveShadow position={[0.03, 0, 0]}>
         <boxGeometry args={[2.62, 3.58, 0.5]} />
         <meshPhysicalMaterial
-          color="#101A2E"
+          color="#F1E8D5"
           roughness={0.32}
           metalness={0.12}
           clearcoat={0.55}
