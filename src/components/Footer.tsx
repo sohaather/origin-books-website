@@ -23,7 +23,7 @@ export default function Footer() {
             {business.phoneDisplay}
           </a>
          <p className="mt-3 max-w-sm text-sm leading-relaxed text-slate-400">
-           Office 1590, 85 Dunstall Hill, Wolverhampton, United Kingdom, WV6 0SR
+           {business.address}
          </p>
         </div>
 

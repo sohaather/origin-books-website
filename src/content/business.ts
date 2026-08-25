@@ -4,11 +4,10 @@
 export const business = {
   businessName: 'Origin Books Publishing',
   shortName: 'Origin Books',
-  phone: '7882760877',
-  // Formatted for display purposes only; the raw digits above are used for tel: links.
-  phoneDisplay: '7882760877',
+  phone: '+447882760877',
+  phoneDisplay: '+44 7882 760877',
   email: '', // Not provided yet — leave empty until supplied.
-  address: '', // Not provided yet — leave empty until supplied.
+  address: 'Office 1590, 85 Dunstall Hill, Wolverhampton, United Kingdom, WV6 0SR',
   tagline: 'A publishing house for authors who refuse to settle for ordinary.',
 } as const
 
