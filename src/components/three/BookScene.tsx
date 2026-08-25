@@ -8,25 +8,22 @@ interface BookSceneProps {
   autoRotate?: boolean
 }
 
-/**
- * A stylised hardcover book featuring a real published book cover.
- * The book uses a cream page-block edge and subtle 3D lighting.
- */
 export default function BookScene({ autoRotate = true }: BookSceneProps) {
   const group = useRef<THREE.Group>(null)
   const coverTexture = useTexture(coverImage)
 
   coverTexture.wrapS = THREE.ClampToEdgeWrapping
   coverTexture.wrapT = THREE.ClampToEdgeWrapping
+
   const pointer = useRef({ x: 0, y: 0 })
   const target = useRef({ x: 0, y: 0 })
 
   useFrame((state, delta) => {
     if (!group.current) return
 
-    // Smoothly track pointer position for a subtle parallax tilt.
     target.current.x = state.pointer.x
     target.current.y = state.pointer.y
+
     pointer.current.x += (target.current.x - pointer.current.x) * 0.04
     pointer.current.y += (target.current.y - pointer.current.y) * 0.04
 
@@ -43,7 +40,7 @@ export default function BookScene({ autoRotate = true }: BookSceneProps) {
 
   return (
     <group ref={group} rotation={[-0.08, 0.5, 0]} position={[0, 0, 0]}>
-      {/* Main board — front + back covers + spine, treated as one closed volume */}
+      {/* Book body */}
       <mesh castShadow receiveShadow position={[0.03, 0, 0]}>
         <boxGeometry args={[2.5, 3.42, 0.5]} />
         <meshPhysicalMaterial
@@ -55,7 +52,7 @@ export default function BookScene({ autoRotate = true }: BookSceneProps) {
         />
       </mesh>
 
-      {/* Penny book cover */}
+      {/* Penny front cover */}
       <mesh position={[0.03, 0, 0.255]}>
         <planeGeometry args={[2.5, 3.42]} />
         <meshStandardMaterial
@@ -65,23 +62,23 @@ export default function BookScene({ autoRotate = true }: BookSceneProps) {
         />
       </mesh>
 
-      {/* Page block sliver — fore-edge */}
+      {/* Page block — fore-edge */}
       <mesh position={[1.28, 0, 0]}>
-        <boxGeometry args={[0.06, 3.42, 0.4]} />
+        <boxGeometry args={[0.06, 3.28, 0.4]} />
         <meshStandardMaterial color="#EFEBE1" roughness={0.95} />
       </mesh>
 
-      {/* Page block sliver — top edge */}
-      <mesh position={[0.02, 1.8, 0]}>
-        <boxGeometry args={[2.5, 0.06, 0.4]} />
+      {/* Page block — top edge */}
+      <mesh position={[0.02, 1.71, 0]}>
+        <boxGeometry args={[2.38, 0.06, 0.4]} />
         <meshStandardMaterial color="#EFEBE1" roughness={0.95} />
       </mesh>
 
-      {/* Page block sliver — bottom edge */}
-      <mesh position={[0.02, -1.71, 0]}
-        <boxGeometry args={[2.5, 0.06, 0.4]} />
+      {/* Page block — bottom edge */}
+      <mesh position={[0.02, -1.71, 0]}>
+        <boxGeometry args={[2.38, 0.06, 0.4]} />
         <meshStandardMaterial color="#EFEBE1" roughness={0.95} />
       </mesh>
-      </group>
+    </group>
   )
 }
