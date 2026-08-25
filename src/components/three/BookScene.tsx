@@ -2,7 +2,7 @@ import { useRef } from 'react'
 import { useTexture } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
-import coverImage from '@/assets/books/penny-cover.jpg'
+import coverImage from '@/assets/books/penny-front.png'
 
 interface BookSceneProps {
   autoRotate?: boolean
