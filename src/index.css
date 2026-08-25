@@ -40,13 +40,13 @@ input:focus-visible,
 textarea:focus-visible,
 select:focus-visible,
 [tabindex]:focus-visible {
-  outline: 2px solid #B08D57;
+  outline: 2px solid #4F7CFF;
   outline-offset: 3px;
   border-radius: 2px;
 }
 
 ::selection {
-  background-color: #B08D57;
+  background-color: #4F7CFF;
   color: #0B1220;
 }
 
@@ -74,19 +74,19 @@ select:focus-visible,
 }
 
 .btn-primary {
-  @apply inline-flex items-center justify-center gap-2 rounded-none bg-brass px-7 py-3.5 font-body text-sm font-medium tracking-wide text-ink-950 transition-colors duration-300 ease-editorial hover:bg-brass-light focus-visible:bg-brass-light;
+  @apply inline-flex items-center justify-center gap-2 rounded-lg bg-brass px-7 py-3.5 font-body text-sm font-medium tracking-wide text-white shadow-sm transition-all duration-300 ease-editorial hover:bg-brass-light hover:-translate-y-0.5 hover:shadow-md focus-visible:bg-brass-light;
 }
 
 .btn-secondary {
-  @apply inline-flex items-center justify-center gap-2 rounded-none border border-ink-900/20 bg-transparent px-7 py-3.5 font-body text-sm font-medium tracking-wide text-ink-900 transition-colors duration-300 ease-editorial hover:border-brass hover:text-brass;
+  @apply inline-flex items-center justify-center gap-2 rounded-lg border border-ink-900/15 bg-transparent px-7 py-3.5 font-body text-sm font-medium tracking-wide text-ink-900 transition-all duration-300 ease-editorial hover:border-brass hover:text-brass hover:-translate-y-0.5;
 }
 
 .btn-secondary-dark {
-  @apply inline-flex items-center justify-center gap-2 rounded-none border border-white/25 bg-transparent px-7 py-3.5 font-body text-sm font-medium tracking-wide text-white transition-colors duration-300 ease-editorial hover:border-brass hover:text-brass-light;
+  @apply inline-flex items-center justify-center gap-2 rounded-lg border border-white/25 bg-transparent px-7 py-3.5 font-body text-sm font-medium tracking-wide text-white transition-all duration-300 ease-editorial hover:border-brass hover:text-brass-light hover:-translate-y-0.5;
 }
 
 .link-underline {
-  background-image: linear-gradient(#B08D57, #B08D57);
+  background-image: linear-gradient(#4F7CFF, #4F7CFF);
   background-size: 0% 1px;
   background-position: 0 100%;
   background-repeat: no-repeat;
