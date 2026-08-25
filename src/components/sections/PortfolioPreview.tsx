@@ -12,10 +12,14 @@ export default function PortfolioPreview() {
           <div>
             <p className="eyebrow text-ink-900/60">Portfolio</p>
             <h2 className="mt-5 max-w-lg font-display text-3xl leading-tight text-ink-900 sm:text-4xl">
-              A glimpse of work in progress.
+              A glimpse of our published work.
             </h2>
           </div>
-          <Link to="/portfolio" className="link-underline shrink-0 font-mono text-xs uppercase tracking-widest2 text-ink-900">
+
+          <Link
+            to="/portfolio"
+            className="link-underline shrink-0 font-mono text-xs uppercase tracking-widest2 text-ink-900"
+          >
             View full portfolio &rarr;
           </Link>
         </Reveal>
@@ -24,16 +28,21 @@ export default function PortfolioPreview() {
           {preview.map((item, i) => (
             <Reveal key={item.id} delay={i * 0.08}>
               <Link to="/portfolio" className="group block">
-                <div className="relative aspect-[4/5] w-full overflow-hidden bg-ink-900">
-                  <div className="relative aspect-[4/5] w-full overflow-hidden bg-slate-100">
-  <img
-    src={item.cover}
-    alt={`${item.title} book cover`}
-    className="h-full w-full object-cover transition-transform duration-700 ease-editorial group-hover:scale-[1.03]"
-  />
-</div>
-                <h3 className="mt-5 font-display text-lg text-ink-900">{item.title}</h3>
-                <p className="mt-1 text-sm text-slate-500">{item.format}</p>
+                <div className="relative aspect-[4/5] w-full overflow-hidden rounded-sm bg-slate-100">
+                  <img
+                    src={item.cover}
+                    alt={`${item.title} book cover`}
+                    className="h-full w-full object-cover transition-transform duration-700 ease-editorial group-hover:scale-[1.03]"
+                  />
+                </div>
+
+                <h3 className="mt-5 font-display text-lg text-ink-900">
+                  {item.title}
+                </h3>
+
+                <p className="mt-1 text-sm text-slate-500">
+                  {item.format}
+                </p>
               </Link>
             </Reveal>
           ))}
