@@ -15,7 +15,7 @@ export default function Blogs() {
       <PageHeader
         eyebrow="Blog"
         title="Notes on publishing, editing, and building a readership."
-        description="This section is structured and ready for real articles. The entries below are placeholders reserved for that content."
+        description="Practical insights on publishing, book production, distribution, marketing, and building a lasting author brand."
       />
 
       <section className="bg-paper py-24 lg:py-28">
