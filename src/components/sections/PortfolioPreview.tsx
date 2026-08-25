@@ -25,15 +25,13 @@ export default function PortfolioPreview() {
             <Reveal key={item.id} delay={i * 0.08}>
               <Link to="/portfolio" className="group block">
                 <div className="relative aspect-[4/5] w-full overflow-hidden bg-ink-900">
-                  <div
-                    className="absolute inset-0 opacity-90 transition-transform duration-700 ease-editorial group-hover:scale-105"
-                    style={{ background: 'linear-gradient(155deg, #16223A 0%, #0B1220 65%, #080D18 100%)' }}
-                  />
-                  <div className="absolute inset-x-6 bottom-8 h-px bg-brass/60" />
-                  <span className="absolute left-6 top-6 font-mono text-[11px] uppercase tracking-widest2 text-brass-light">
-                    {item.category}
-                  </span>
-                </div>
+                  <div className="relative aspect-[4/5] w-full overflow-hidden bg-slate-100">
+  <img
+    src={item.cover}
+    alt={`${item.title} book cover`}
+    className="h-full w-full object-cover transition-transform duration-700 ease-editorial group-hover:scale-[1.03]"
+  />
+</div>
                 <h3 className="mt-5 font-display text-lg text-ink-900">{item.title}</h3>
                 <p className="mt-1 text-sm text-slate-500">{item.format}</p>
               </Link>
