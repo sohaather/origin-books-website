@@ -12,8 +12,8 @@ export default {
           600: '#233150',
         },
         paper: {
-          DEFAULT: '#F7F5EF',
-          dim: '#EFEBE1',
+          DEFAULT: '#F8FAFC',
+          dim: '#EEF2F7',
         },
         slate: {
           50: '#F4F5F7',
@@ -23,9 +23,9 @@ export default {
           700: '#3A4150',
         },
         brass: {
-          DEFAULT: '#B08D57',
-          light: '#D4B483',
-          dark: '#8A6C3F',
+          DEFAULT: '#4F7CFF',
+          light: '#8EA8FF',
+          dark: '#3157C7',
         },
       },
       fontFamily: {
