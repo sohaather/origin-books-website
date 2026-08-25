@@ -23,9 +23,9 @@ export default {
           700: '#3A4150',
         },
         brass: {
-          DEFAULT: '#4F7CFF',
-          light: '#8EA8FF',
-          dark: '#3157C7',
+          DEFAULT: '#3157C7',
+          light: '#6C88DB',
+          dark: '#223C8A',
         },
       },
       fontFamily: {
