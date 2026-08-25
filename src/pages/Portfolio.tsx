@@ -47,8 +47,8 @@ export default function Portfolio() {
                 onClick={() => setActive(category)}
                 className={`border px-5 py-2 font-mono text-[11px] uppercase tracking-widest2 transition-colors duration-300 ease-editorial ${
                   active === category
-                    ? 'border-brass bg-brass text-ink-950'
-                    : 'border-ink-900/15 text-slate-500 hover:border-brass hover:text-brass-dark'
+                    ? 'border-[#4F7CFF] bg-[#4F7CFF] text-white'
+                    : 'border-ink-900/15 text-slate-500 hover:border-[#4F7CFF] hover:text-[#4F7CFF]'
                 }`}
               >
                 {category}
