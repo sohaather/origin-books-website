@@ -8,8 +8,16 @@ export interface Service {
 
 export const services: Service[] = [
   {
-    slug: 'editing-proofreading',
+    slug: 'ghostwriting',
     number: '01',
+    title: 'Ghostwriting',
+    summary: 'Professional writing support that transforms your ideas, experiences, and stories into a compelling manuscript.',
+    description:
+      'Have a story to tell but need help putting it into words? Our ghostwriting service transforms your ideas, experiences, expertise, or story into a polished manuscript while preserving your unique voice and vision. From concept development to a complete manuscript, we work closely with you to bring your book to life.',
+  },
+  {
+    slug: 'editing-proofreading',
+    number: '02',
     title: 'Editing & Proofreading',
     summary: 'Developmental, line, and copy editing that sharpens your manuscript without losing your voice.',
     description:
@@ -17,7 +25,7 @@ export const services: Service[] = [
   },
   {
     slug: 'book-formatting',
-    number: '02',
+    number: '03',
     title: 'Book Formatting',
     summary: 'Interior formatting built for print and digital, so every edition reads beautifully.',
     description:
@@ -25,7 +33,7 @@ export const services: Service[] = [
   },
   {
     slug: 'typesetting',
-    number: '03',
+    number: '04',
     title: 'Typesetting',
     summary: 'Considered typography and page layout that gives your book an editorial, professional feel.',
     description:
@@ -33,7 +41,7 @@ export const services: Service[] = [
   },
   {
     slug: 'cover-design',
-    number: '04',
+    number: '05',
     title: 'Custom Cover Design',
     summary: 'Original cover concepts designed to work at thumbnail size and on the shelf.',
     description:
@@ -41,7 +49,7 @@ export const services: Service[] = [
   },
   {
     slug: 'ebook-publishing',
-    number: '05',
+    number: '06',
     title: 'eBook Publishing',
     summary: 'Clean, validated eBook files prepared for the major digital storefronts.',
     description:
@@ -49,7 +57,7 @@ export const services: Service[] = [
   },
   {
     slug: 'paperback-publishing',
-    number: '06',
+    number: '07',
     title: 'Paperback Publishing',
     summary: 'Print-ready paperback files, from trim size to final interior layout.',
     description:
@@ -57,7 +65,7 @@ export const services: Service[] = [
   },
   {
     slug: 'hardcover-publishing',
-    number: '07',
+    number: '08',
     title: 'Hardcover Publishing',
     summary: 'Premium hardcover preparation, including jacket and case design considerations.',
     description:
@@ -65,23 +73,23 @@ export const services: Service[] = [
   },
   {
     slug: 'amazon-kdp-publishing',
-    number: '08',
+    number: '09',
     title: 'Amazon KDP Publishing',
     summary: 'Files prepared and formatted to meet Amazon KDP publishing requirements.',
     description:
       'We prepare and format your manuscript and cover files to meet Amazon KDP publishing requirements for both eBook and print formats, guiding you through setup and submission.',
   },
   {
-    slug: 'ingramspark-publishing',
-    number: '09',
-    title: 'IngramSpark Publishing',
-    summary: 'Wide-distribution print and digital files prepared for IngramSpark.',
+    slug: 'global-publishing',
+    number: '10',
+    title: 'Global Publishing',
+    summary: 'Publishing and distribution support designed to make your book available to readers worldwide.',
     description:
-      'For authors seeking wider retail and library distribution, we prepare files formatted to IngramSpark specifications for both print and digital editions.',
+      'We help authors take their books beyond a single marketplace with global publishing and distribution support. From preparing publication-ready files to coordinating international availability, we help make your work accessible to readers across multiple markets.',
   },
   {
     slug: 'isbn-registration',
-    number: '10',
+    number: '11',
     title: 'ISBN Registration',
     summary: 'Guidance through the ISBN registration process for your edition.',
     description:
@@ -89,7 +97,7 @@ export const services: Service[] = [
   },
   {
     slug: 'book-marketing',
-    number: '11',
+    number: '12',
     title: 'Book Marketing',
     summary: 'Launch and promotional strategy built around your book and your audience.',
     description:
@@ -97,7 +105,7 @@ export const services: Service[] = [
   },
   {
     slug: 'author-branding',
-    number: '12',
+    number: '13',
     title: 'Author Branding',
     summary: 'A consistent visual and voice identity across your books and platforms.',
     description:
@@ -105,7 +113,7 @@ export const services: Service[] = [
   },
   {
     slug: 'author-website-design',
-    number: '13',
+    number: '14',
     title: 'Author Website Design',
     summary: 'A dedicated website that gives readers a home to discover you and your books.',
     description:
