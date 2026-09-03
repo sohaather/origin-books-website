@@ -1,37 +1,19 @@
-import { lazy, Suspense, useEffect, useRef, useState } from 'react'
+import { Suspense, useCallback, useEffect, useRef, useState } from 'react'
+import { Canvas } from '@react-three/fiber'
+import BookScene from '@/components/three/BookScene'
 import StaticBookFallback from '@/components/three/StaticBookFallback'
 import { useReducedMotion } from '@/hooks/useReducedMotion'
 import { useIsMobile } from '@/hooks/useMediaQuery'
-
-const Hero3DCanvas = lazy(() => import('@/components/three/Hero3DCanvas'))
 
 export default function Hero3DBook() {
   const reducedMotion = useReducedMotion()
   const isMobile = useIsMobile()
   const wrapperRef = useRef<HTMLDivElement>(null)
-  const [load3D, setLoad3D] = useState(false)
+  const [bookReady, setBookReady] = useState(false)
 
-  useEffect(() => {
-    if (isMobile || reducedMotion) return
-
-    let timeoutId: ReturnType<typeof setTimeout> | undefined
-
-    const load = () => setLoad3D(true)
-
-    if ('requestIdleCallback' in window) {
-      const idleId = window.requestIdleCallback(load, { timeout: 1500 })
-
-      return () => {
-        window.cancelIdleCallback(idleId)
-      }
-    }
-
-    timeoutId = setTimeout(load, 500)
-
-    return () => {
-      if (timeoutId) clearTimeout(timeoutId)
-    }
-  }, [isMobile, reducedMotion])
+  const handleBookReady = useCallback(() => {
+    setBookReady(true)
+  }, [])
 
   useEffect(() => {
     if (reducedMotion) return
@@ -74,13 +56,42 @@ export default function Hero3DBook() {
       className="relative h-full w-full"
       style={{ willChange: 'transform, opacity' }}
     >
-      {!load3D ? (
-        <StaticBookFallback />
-      ) : (
-        <Suspense fallback={<StaticBookFallback />}>
-          <Hero3DCanvas />
-        </Suspense>
+      {!bookReady && (
+        <div className="absolute inset-0 z-10">
+          <StaticBookFallback />
+        </div>
       )}
+
+      <div
+        className="h-full w-full transition-opacity duration-500"
+        style={{ opacity: bookReady ? 1 : 0 }}
+      >
+        <Canvas
+          dpr={[1, 1.75]}
+          camera={{ position: [0, 0, 7.2], fov: 34 }}
+          gl={{ antialias: true, alpha: true }}
+        >
+          <Suspense fallback={null}>
+            <ambientLight intensity={0.55} color="#8CA0C4" />
+            <directionalLight
+              position={[4, 5, 6]}
+              intensity={1.5}
+              color="#FFF7E8"
+            />
+            <directionalLight
+              position={[-5, -2, -3]}
+              intensity={0.35}
+              color="#B08D57"
+            />
+            <pointLight
+              position={[-3, 3, 4]}
+              intensity={0.4}
+              color="#D4B483"
+            />
+            <BookScene onReady={handleBookReady} />
+          </Suspense>
+        </Canvas>
+      </div>
     </div>
   )
 }

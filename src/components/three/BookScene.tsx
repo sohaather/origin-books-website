@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useRef, useEffect } from 'react'
 import { useTexture } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
@@ -6,14 +6,25 @@ import coverImage from '@/assets/books/penny-front.webp'
 
 interface BookSceneProps {
   autoRotate?: boolean
+  onReady?: () => void
 }
 
-export default function BookScene({ autoRotate = true }: BookSceneProps) {
+export default function BookScene({
+  autoRotate = true,
+  onReady,
+}: BookSceneProps) {
   const group = useRef<THREE.Group>(null)
   const coverTexture = useTexture(coverImage)
 
-  coverTexture.wrapS = THREE.ClampToEdgeWrapping
-  coverTexture.wrapT = THREE.ClampToEdgeWrapping
+  useEffect(() => {
+    if (coverTexture.image) {
+      coverTexture.wrapS = THREE.ClampToEdgeWrapping
+      coverTexture.wrapT = THREE.ClampToEdgeWrapping
+      coverTexture.needsUpdate = true
+
+      onReady?.()
+    }
+  }, [coverTexture, onReady])
 
   const pointer = useRef({ x: 0, y: 0 })
   const target = useRef({ x: 0, y: 0 })
