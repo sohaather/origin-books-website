@@ -14,7 +14,8 @@ export default function Hero3DBook() {
   useEffect(() => {
     if (isMobile || reducedMotion) return
 
-    // Let the initial page render first.
+    let timeoutId: ReturnType<typeof setTimeout> | undefined
+
     const load = () => setLoad3D(true)
 
     if ('requestIdleCallback' in window) {
@@ -25,10 +26,10 @@ export default function Hero3DBook() {
       }
     }
 
-    const timeoutId = window.setTimeout(load, 500)
+    timeoutId = setTimeout(load, 500)
 
     return () => {
-      window.clearTimeout(timeoutId)
+      if (timeoutId) clearTimeout(timeoutId)
     }
   }, [isMobile, reducedMotion])
 
