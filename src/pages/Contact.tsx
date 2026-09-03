@@ -13,32 +13,54 @@ interface FormState {
   message: string
 }
 
-const initialState: FormState = { name: '', email: '', phone: '', service: '', message: '' }
+const initialState: FormState = {
+  name: '',
+  email: '',
+  phone: '',
+  service: '',
+  message: '',
+}
 
 export default function Contact() {
   const [form, setForm] = useState<FormState>(initialState)
   const [submitted, setSubmitted] = useState(false)
   const [errors, setErrors] = useState<Partial<Record<keyof FormState, string>>>({})
 
-  const handleChange = (field: keyof FormState) => (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setForm((prev) => ({ ...prev, [field]: e.target.value }))
-  }
+  const handleChange =
+    (field: keyof FormState) =>
+    (
+      e: ChangeEvent<
+        HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+      >
+    ) => {
+      setForm((prev) => ({ ...prev, [field]: e.target.value }))
+    }
 
   const validate = (): boolean => {
     const nextErrors: Partial<Record<keyof FormState, string>> = {}
-    if (!form.name.trim()) nextErrors.name = 'Please enter your name.'
+
+    if (!form.name.trim()) {
+      nextErrors.name = 'Please enter your name.'
+    }
+
     if (!form.email.trim()) {
       nextErrors.email = 'Please enter your email.'
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
       nextErrors.email = 'Please enter a valid email address.'
     }
-    if (!form.message.trim()) nextErrors.message = 'Tell us a little about your project.'
+
+    if (!form.message.trim()) {
+      nextErrors.message = 'Tell us a little about your project.'
+    }
+
     setErrors(nextErrors)
+
     return Object.keys(nextErrors).length === 0
   }
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault()
+
     if (!validate()) return
 
     // Frontend-only for this stage — no backend, database, or CRM connection yet.
@@ -54,6 +76,7 @@ export default function Contact() {
         description="Get in touch with Origin Books Publishing to discuss editing, design, formatting, and publishing your book."
         path="/contact"
       />
+
       <PageHeader
         eyebrow="Contact"
         title="Tell us about your book."
@@ -64,18 +87,42 @@ export default function Contact() {
         <div className="container-editorial grid gap-14 lg:grid-cols-[1fr_1.2fr] lg:gap-20">
           <Reveal>
             <p className="eyebrow text-ink-900/60">Get in Touch</p>
-            <h2 className="mt-5 font-display text-3xl leading-tight text-ink-900">{business.businessName}</h2>
+
+            <h2 className="mt-5 font-display text-3xl leading-tight text-ink-900">
+              {business.businessName}
+            </h2>
 
             <div className="mt-8 space-y-6">
               <div>
-                <p className="font-mono text-[11px] uppercase tracking-widest2 text-slate-400">Phone</p>
-                <a href={`tel:${business.phone}`} className="link-underline mt-1 inline-block text-lg text-ink-900">
-                  {business.phoneDisplay}
-                </a>
+                <p className="font-mono text-[11px] uppercase tracking-widest2 text-slate-400">
+                  Phone
+                </p>
+
+                <div className="mt-2 space-y-2">
+                  <a
+                    href={`tel:${business.phone}`}
+                    className="link-underline block text-lg text-ink-900"
+                  >
+                    🇬🇧 {business.phoneDisplay}
+                  </a>
+
+                  <a
+                    href="tel:+14255540642"
+                    className="link-underline block text-lg text-ink-900"
+                  >
+                    🇺🇸 +1 425 554 0642
+                  </a>
+                </div>
               </div>
+
               <div>
-                <p className="font-mono text-[11px] uppercase tracking-widest2 text-slate-400">Availability</p>
-                <p className="mt-1 text-slate-600">Working with authors worldwide.</p>
+                <p className="font-mono text-[11px] uppercase tracking-widest2 text-slate-400">
+                  Availability
+                </p>
+
+                <p className="mt-1 text-slate-600">
+                  Working with authors worldwide.
+                </p>
               </div>
             </div>
           </Reveal>
@@ -83,10 +130,15 @@ export default function Contact() {
           <Reveal delay={0.1}>
             {submitted ? (
               <div className="border border-brass/40 bg-white p-10 text-center">
-                <p className="font-display text-2xl text-ink-900">Thank you.</p>
-                <p className="mt-3 text-slate-600">
-                  Your message has been received. We'll follow up with you shortly.
+                <p className="font-display text-2xl text-ink-900">
+                  Thank you.
                 </p>
+
+                <p className="mt-3 text-slate-600">
+                  Your message has been received. We'll follow up with you
+                  shortly.
+                </p>
+
                 <button
                   type="button"
                   onClick={() => setSubmitted(false)}
@@ -99,9 +151,13 @@ export default function Contact() {
               <form onSubmit={handleSubmit} noValidate className="space-y-6">
                 <div className="grid gap-6 sm:grid-cols-2">
                   <div>
-                    <label htmlFor="name" className="font-mono text-[11px] uppercase tracking-widest2 text-slate-500">
+                    <label
+                      htmlFor="name"
+                      className="font-mono text-[11px] uppercase tracking-widest2 text-slate-500"
+                    >
                       Name
                     </label>
+
                     <input
                       id="name"
                       name="name"
@@ -109,20 +165,30 @@ export default function Contact() {
                       value={form.name}
                       onChange={handleChange('name')}
                       aria-invalid={!!errors.name}
-                      aria-describedby={errors.name ? 'name-error' : undefined}
+                      aria-describedby={
+                        errors.name ? 'name-error' : undefined
+                      }
                       className="mt-2 w-full border border-ink-900/20 bg-white px-4 py-3 text-ink-900 outline-none transition-colors duration-300 ease-editorial focus:border-brass"
                     />
+
                     {errors.name && (
-                      <p id="name-error" className="mt-1 text-xs text-red-700">
+                      <p
+                        id="name-error"
+                        className="mt-1 text-xs text-red-700"
+                      >
                         {errors.name}
                       </p>
                     )}
                   </div>
 
                   <div>
-                    <label htmlFor="email" className="font-mono text-[11px] uppercase tracking-widest2 text-slate-500">
+                    <label
+                      htmlFor="email"
+                      className="font-mono text-[11px] uppercase tracking-widest2 text-slate-500"
+                    >
                       Email
                     </label>
+
                     <input
                       id="email"
                       name="email"
@@ -130,11 +196,17 @@ export default function Contact() {
                       value={form.email}
                       onChange={handleChange('email')}
                       aria-invalid={!!errors.email}
-                      aria-describedby={errors.email ? 'email-error' : undefined}
+                      aria-describedby={
+                        errors.email ? 'email-error' : undefined
+                      }
                       className="mt-2 w-full border border-ink-900/20 bg-white px-4 py-3 text-ink-900 outline-none transition-colors duration-300 ease-editorial focus:border-brass"
                     />
+
                     {errors.email && (
-                      <p id="email-error" className="mt-1 text-xs text-red-700">
+                      <p
+                        id="email-error"
+                        className="mt-1 text-xs text-red-700"
+                      >
                         {errors.email}
                       </p>
                     )}
@@ -143,9 +215,16 @@ export default function Contact() {
 
                 <div className="grid gap-6 sm:grid-cols-2">
                   <div>
-                    <label htmlFor="phone" className="font-mono text-[11px] uppercase tracking-widest2 text-slate-500">
-                      Phone <span className="normal-case text-slate-400">(optional)</span>
+                    <label
+                      htmlFor="phone"
+                      className="font-mono text-[11px] uppercase tracking-widest2 text-slate-500"
+                    >
+                      Phone{' '}
+                      <span className="normal-case text-slate-400">
+                        (optional)
+                      </span>
                     </label>
+
                     <input
                       id="phone"
                       name="phone"
@@ -157,9 +236,13 @@ export default function Contact() {
                   </div>
 
                   <div>
-                    <label htmlFor="service" className="font-mono text-[11px] uppercase tracking-widest2 text-slate-500">
+                    <label
+                      htmlFor="service"
+                      className="font-mono text-[11px] uppercase tracking-widest2 text-slate-500"
+                    >
                       Service
                     </label>
+
                     <select
                       id="service"
                       name="service"
@@ -168,20 +251,26 @@ export default function Contact() {
                       className="mt-2 w-full border border-ink-900/20 bg-white px-4 py-3 text-ink-900 outline-none transition-colors duration-300 ease-editorial focus:border-brass"
                     >
                       <option value="">Select a service</option>
+
                       {services.map((service) => (
                         <option key={service.slug} value={service.title}>
                           {service.title}
                         </option>
                       ))}
+
                       <option value="Not sure yet">Not sure yet</option>
                     </select>
                   </div>
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="font-mono text-[11px] uppercase tracking-widest2 text-slate-500">
+                  <label
+                    htmlFor="message"
+                    className="font-mono text-[11px] uppercase tracking-widest2 text-slate-500"
+                  >
                     Message
                   </label>
+
                   <textarea
                     id="message"
                     name="message"
@@ -189,17 +278,26 @@ export default function Contact() {
                     value={form.message}
                     onChange={handleChange('message')}
                     aria-invalid={!!errors.message}
-                    aria-describedby={errors.message ? 'message-error' : undefined}
+                    aria-describedby={
+                      errors.message ? 'message-error' : undefined
+                    }
                     className="mt-2 w-full border border-ink-900/20 bg-white px-4 py-3 text-ink-900 outline-none transition-colors duration-300 ease-editorial focus:border-brass"
                   />
+
                   {errors.message && (
-                    <p id="message-error" className="mt-1 text-xs text-red-700">
+                    <p
+                      id="message-error"
+                      className="mt-1 text-xs text-red-700"
+                    >
                       {errors.message}
                     </p>
                   )}
                 </div>
 
-                <button type="submit" className="btn-primary w-full sm:w-auto">
+                <button
+                  type="submit"
+                  className="btn-primary w-full sm:w-auto"
+                >
                   Send Message
                 </button>
               </form>

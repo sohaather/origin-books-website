@@ -12,27 +12,43 @@ export default function Footer() {
           <p className="font-display text-2xl text-white">
             Origin <span className="text-brass">Books</span>
           </p>
+
           <p className="mt-5 max-w-sm text-sm leading-relaxed text-slate-400">
-            {business.businessName} is a full-service publishing partner for authors worldwide — editing, design,
-            formatting, distribution, and marketing under one roof.
+            {business.businessName} is a full-service publishing partner for authors worldwide —
+            editing, design, formatting, distribution, and marketing under one roof.
           </p>
-          <a
-            href={`tel:${business.phone}`}
-            className="link-underline mt-6 inline-block font-mono text-sm text-slate-200"
-          >
-            {business.phoneDisplay}
-          </a>
-         <p className="mt-3 max-w-sm text-sm leading-relaxed text-slate-400">
-           {business.address}
-         </p>
+
+          <div className="mt-6 space-y-2">
+            <a
+              href={`tel:${business.phone}`}
+              className="link-underline block font-mono text-sm text-slate-200"
+            >
+              🇬🇧 {business.phoneDisplay}
+            </a>
+
+            <a
+              href="tel:+14255540642"
+              className="link-underline block font-mono text-sm text-slate-200"
+            >
+              🇺🇸 +1 425 554 0642
+            </a>
+          </div>
+
+          <p className="mt-3 max-w-sm text-sm leading-relaxed text-slate-400">
+            {business.address}
+          </p>
         </div>
 
         <div>
           <p className="eyebrow">Explore</p>
+
           <ul className="mt-5 space-y-3">
             {footerNav.map((item) => (
               <li key={item.path}>
-                <Link to={item.path} className="link-underline text-sm text-slate-300 hover:text-white">
+                <Link
+                  to={item.path}
+                  className="link-underline text-sm text-slate-300 hover:text-white"
+                >
                   {item.label}
                 </Link>
               </li>
@@ -42,17 +58,26 @@ export default function Footer() {
 
         <div>
           <p className="eyebrow">Legal</p>
+
           <ul className="mt-5 space-y-3">
             {legalNav.map((item) => (
               <li key={item.path}>
-                <Link to={item.path} className="link-underline text-sm text-slate-300 hover:text-white">
+                <Link
+                  to={item.path}
+                  className="link-underline text-sm text-slate-300 hover:text-white"
+                >
                   {item.label}
                 </Link>
               </li>
             ))}
           </ul>
+
           <p className="eyebrow mt-8">Start a Project</p>
-          <Link to="/contact" className="link-underline mt-4 inline-block text-sm text-brass-light">
+
+          <Link
+            to="/contact"
+            className="link-underline mt-4 inline-block text-sm text-brass-light"
+          >
             Get in touch &rarr;
           </Link>
         </div>
@@ -63,7 +88,10 @@ export default function Footer() {
           <p>
             &copy; {year} {business.businessName}. All rights reserved.
           </p>
-          <p className="font-mono uppercase tracking-widest2">Publishing services for authors worldwide</p>
+
+          <p className="font-mono uppercase tracking-widest2">
+            Publishing services for authors worldwide
+          </p>
         </div>
       </div>
     </footer>
